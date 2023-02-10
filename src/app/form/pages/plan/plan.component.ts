@@ -62,6 +62,8 @@ export class PlanComponent implements OnInit {
   }
 
   next(): void {
+    const plan = this.strDescuento;
+    sessionStorage.setItem('plan', plan);
     this.router.navigate(['/multi-step/add-ons']);
   }
 }

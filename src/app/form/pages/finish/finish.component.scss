@@ -1,0 +1,64 @@
+.final__preview {
+  background-color: var(--magnolia);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.final__plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+
+  .final__title {
+    font-weight: 700;
+    color: var(--marine-blue);
+  }
+
+  .final__contain :last-child {
+    color: var(--cool-gray);
+    text-decoration: underline;
+  }
+
+  .final__price {
+    font-weight: 700;
+    color: var(--marine-blue);
+  }
+}
+
+hr {
+  background-color: var(--cool-gray);
+}
+
+.final__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.final__text {
+  color: var(--cool-gray);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.final__value {
+  color: var(--marine-blue);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.final__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding: 0 20px;
+}
+
+.final__value--color {
+  color: var(--purplish-blue);
+  font-size: 1.2rem;
+  font-weight: 700;
+}

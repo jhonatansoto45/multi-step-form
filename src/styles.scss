@@ -76,3 +76,16 @@ body {
   font-weight: 600;
   cursor: pointer;
 }
+
+.btn__confirm {
+  float: right;
+  margin-top: 76px;
+  border-radius: 7px;
+  padding: 10px;
+  width: 100px;
+  background-color: var(--purplish-blue);
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
