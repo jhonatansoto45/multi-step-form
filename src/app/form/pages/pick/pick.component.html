@@ -1,1 +1,33 @@
-<p>pick works!</p>
+<section class="pick">
+  <h1 class="title">Pick add-ons</h1>
+  <p class="description">Add-ons help enhance your gaming experience.</p>
+
+  <article class="pick__checked">
+    <div
+      class="pick__item"
+      *ngFor="let item of listChecks; let i = index"
+      [ngClass]="{ 'pick__item--checked': item.checked }"
+    >
+      <div class="pick__info">
+        <label class="pick__check">
+          <input
+            type="checkbox"
+            [checked]="item.checked"
+            (click)="changeCheck(i)"
+          />
+          <div class="checkmark"></div>
+        </label>
+        <div class="pick__contain">
+          <p class="pick__title">{{ item.title }}</p>
+          <p class="pick__description">{{ item.description }}</p>
+        </div>
+      </div>
+      <span class="pick__price">{{ item.price }}</span>
+    </div>
+  </article>
+
+  <div class="plan__btns">
+    <button class="btn__back" (click)="back()">Go back</button>
+    <button class="btn__next" (click)="next()">Next Step</button>
+  </div>
+</section>

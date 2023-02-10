@@ -1,0 +1,116 @@
+.pick__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--light-gray);
+}
+
+.pick__info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pick__contain {
+  display: flex;
+  flex-direction: column;
+}
+
+.pick__item--checked {
+  border: 1px solid var(--marine-blue);
+  background-color: var(--magnolia);
+}
+
+.pick__title {
+  color: var(--marine-blue);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.pick__description {
+  color: var(--cool-gray);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.pick__price {
+  color: var(--purplish-blue);
+  font-weight: 400;
+}
+
+/* Hide the default checkbox */
+.pick__check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.pick__check {
+  display: flex;
+  gap: 10px;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: relative;
+  box-shadow: var(--light-gray) 0px 0px 0px 2px;
+  background-color: var(--white);
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  margin-top: -1px;
+  transition: all 0.2s ease 0s;
+  cursor: pointer;
+  transform-origin: 0px 10px;
+  border-radius: 4px;
+  margin: -1px 10px 0px 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.pick__check input:checked ~ .checkmark {
+  box-shadow: transparent 0px 0px 0px 2px;
+  background-color: var(--purplish-blue);
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+  flex-shrink: 0;
+  margin-top: -1px;
+  transition: all 0.2s ease 0s;
+  cursor: pointer;
+  transform-origin: 0px 10px;
+  border-radius: 4px;
+  margin: -1px 10px 0px 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.pick__check input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.pick__check .checkmark:after {
+  left: 0.29em;
+  top: 0.1em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid var(--white);
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+  transition: all 500ms ease-in-out;
+}
