@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal',
@@ -13,7 +14,7 @@ export class PersonalComponent implements OnInit {
     phone: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -26,5 +27,7 @@ export class PersonalComponent implements OnInit {
       this.myForm.markAllAsTouched();
       return;
     }
+
+    this.router.navigate(['/multi-step/select-plan']);
   }
 }
