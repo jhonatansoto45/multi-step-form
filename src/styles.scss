@@ -34,3 +34,45 @@
 body {
   font-family: "Ubuntu", sans-serif;
 }
+
+.title {
+  font-size: 2.5rem;
+  color: var(--marine-blue);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.description {
+  color: var(--cool-gray);
+  margin-bottom: 35px;
+}
+
+.btn__back {
+  float: left;
+  margin-top: 76px;
+  border-radius: 7px;
+  padding: 10px;
+  width: 100px;
+  color: var(--light-gray);
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+}
+
+.btn__back:hover {
+  color: var(--marine-blue);
+}
+
+.btn__next {
+  float: right;
+  margin-top: 76px;
+  border-radius: 7px;
+  padding: 10px;
+  width: 100px;
+  background-color: var(--marine-blue);
+  color: var(--white);
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { FormRoutingModule } from './form-routing.module';
 
@@ -16,6 +16,6 @@ import { FinishComponent } from './pages/finish/finish.component';
     PickComponent,
     FinishComponent,
   ],
-  imports: [CommonModule, FormRoutingModule, ReactiveFormsModule],
+  imports: [CommonModule, FormRoutingModule, FormsModule, ReactiveFormsModule],
 })
 export class FormModule {}

@@ -1,1 +1,36 @@
-<p>plan works!</p>
+<section class="plan">
+  <h1 class="title">Select your plan</h1>
+  <p class="description">You have the option of monthly or yearly billing.</p>
+
+  <article class="plan__card">
+    <div
+      class="plan__item"
+      *ngFor="let item of listCards; let i = index"
+      (click)="selected(i)"
+      [id]="i"
+    >
+      <img [src]="item.image" alt="icon" class="plan__img" />
+      <p class="plan__name">{{ item.name }}</p>
+      <span class="plan__price"
+        >${{ item.price }}{{ descuento ? 0 : "" }}/{{ strDescuento }}</span
+      >
+      <p *ngIf="descuento" class="plan__descuento">2 months free</p>
+    </div>
+  </article>
+
+  <div class="plan__mes">
+    <span [ngClass]="{ disabled__span: descuento }">Monthly</span>
+    <label class="switch">
+      <input type="checkbox" [(ngModel)]="descuento" />
+      <span class="slider"></span>
+    </label>
+    <span [ngClass]="{ disabled__span: !descuento }">Yearly</span>
+  </div>
+
+  <div class="plan__btns">
+    <button class="btn__back" (click)="back()">Go back</button>
+    <button class="btn__next" (click)="next()">
+      Next Step
+    </button>
+  </div>
+</section>

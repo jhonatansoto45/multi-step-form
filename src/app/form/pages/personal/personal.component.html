@@ -1,6 +1,6 @@
 <section class="personal">
-  <h1 class="personal__title">Personal info</h1>
-  <p class="personal__description">
+  <h1 class="title">Personal info</h1>
+  <p class="description">
     Please provide your name, email address, and phone number.
   </p>
   <form (ngSubmit)="saveForm()" [formGroup]="myForm">
@@ -43,6 +43,6 @@
         formControlName="phone"
       />
     </label>
-    <button type="submit">Next Step</button>
+    <button class="btn__next" type="submit">Next Step</button>
   </form>
 </section>
