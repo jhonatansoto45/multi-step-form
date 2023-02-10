@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { GeneralFormService } from 'src/app/service/general-form.service';
 import { CheckItem } from '../../interface/form.interface';
 
@@ -8,7 +9,7 @@ import { CheckItem } from '../../interface/form.interface';
   templateUrl: './pick.component.html',
   styleUrls: ['./pick.component.scss'],
 })
-export class PickComponent implements OnInit {
+export class PickComponent implements OnInit, OnDestroy {
   listChecks: CheckItem[] = [
     {
       checked: true,
@@ -31,6 +32,7 @@ export class PickComponent implements OnInit {
   ];
 
   plan: string = 'mo';
+  picksSeleted: Subscription = new Subscription();
 
   constructor(
     private router: Router,
@@ -38,9 +40,13 @@ export class PickComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('plan')!) {
-      this.plan = sessionStorage.getItem('plan')!;
-    }
+    this.picksSeleted = this.generalService.dataMain$.subscribe((checks) => {
+      console.log(checks);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.picksSeleted.unsubscribe();
   }
 
   typePrice(item: string): string {
@@ -59,7 +65,6 @@ export class PickComponent implements OnInit {
     const checkeds = this.listChecks.filter((check) => check.checked);
     this.generalService.picksSelected$.next(checkeds);
     console.log(checkeds);
-
 
     this.router.navigate(['/multi-step/summary']);
   }
