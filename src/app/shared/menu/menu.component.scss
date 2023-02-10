@@ -1,0 +1,49 @@
+.aside {
+  background-image: url("../../../assets/images/bg-sidebar-desktop.svg");
+  height: 568px;
+  width: 274px;
+  padding: 30px;
+}
+
+.aside__item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 30px;
+
+  .aside__btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    background-color: transparent;
+    cursor: pointer;
+
+    .aside__number {
+      color: var(--white);
+      font-weight: 700;
+    }
+  }
+
+  .aside__text {
+    width: 105px;
+  }
+
+  .aside__step {
+    color: var(--cool-gray);
+  }
+
+  .aside__section {
+    color: var(--alabaster);
+    font-weight: 700;
+  }
+}
+
+.aside__btn--active {
+  background-color: var(--light-blue) !important;
+  border: none !important;
+
+  .aside__number {
+    color: var(--marine-blue) !important;
+  }
+}

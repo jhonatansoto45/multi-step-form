@@ -1,0 +1,15 @@
+<aside class="aside">
+  <div class="aside__item" *ngFor="let item of listMenu">
+    <button
+      class="aside__btn"
+      [routerLink]="[item.route]"
+      [routerLinkActive]="['aside__btn--active']"
+    >
+      <span class="aside__number">{{ item.position }}</span>
+    </button>
+    <div class="aside__text">
+      <p class="aside__step">{{ item.legend }}</p>
+      <P class="aside__section">{{ item.name }}</P>
+    </div>
+  </div>
+</aside>
