@@ -1,27 +1,54 @@
-# MultiStepForm
+# Frontend Mentor - Multi-step form solution
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.8.
+This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### The challenge
 
-## Code scaffolding
+Users should be able to:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Complete each step of the sequence
+- See a summary of their selections on the final step and confirm their order
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
 
-## Build
+### Screenshot
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+![](./src/assets/screencapture.png)
+![](./src/assets/screencapture2.png)
+![](./src/assets/screencapture3.png)
+![](./src/assets/screencapture4.png)
+![](./src/assets/screencapture5.png)
+![](./src/assets/screencapture6.png)
+![](./src/assets/screencapture7.png)
+![](./src/assets/screencapture8.png)
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Links
 
-## Running end-to-end tests
+- Solution URL: [here](https://github.com/jhonatansoto45/multi-step-form)
+- Live Site URL: [here](https://multi-step-form-q0rksvfjk-jhonatansoto45.vercel.app/multi-step/your-info)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## My process
 
-## Further help
+### Built with
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Mobile-first workflow
+- [Angular](https://angular.io/) - JS library
+- [Sweet alert 2](https://sweetalert2.github.io/) - Popup
+
+
+### Continued development
+
+I would like to improve in many aspects of design and programming logic, grid handling in a responsive way. In addition to making many projects of giant size to learn more every day from other developers and improve the quality of code.
+
+## Author
+
+- Frontend Mentor - [@jhonatansoto45](https://www.frontendmentor.io/profile/jhonatansoto45)
+- Twitter - [@Bautistajhonata](https://www.twitter.com/bautistajhonata)
+
+
