@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { GeneralFormService } from 'src/app/service/general-form.service';
+import { DataComplete } from '../../interface/form.interface';
 
 @Component({
   selector: 'app-finish',
@@ -9,25 +9,41 @@ import { GeneralFormService } from 'src/app/service/general-form.service';
   styleUrls: ['./finish.component.scss'],
 })
 export class FinishComponent implements OnInit, OnDestroy {
-  picksSeleted: Subscription = new Subscription();
+  current!: DataComplete;
 
-  constructor(private generalService: GeneralFormService, private router: Router) {}
-
-  ngOnInit(): void {
-    this.picksSeleted = this.generalService.picksSelected$.subscribe(
-      (checks) => {
-        console.log(checks);
-      }
-    );
+  constructor(
+    private generalService: GeneralFormService,
+    private router: Router
+  ) {
+    if (generalService.loadSessionStorage())
+      this.current = generalService.loadSessionStorage();
+    else this.router.navigate(['/multi-step/your-info']);
   }
 
-  ngOnDestroy(): void {
-    this.picksSeleted.unsubscribe();
+  ngOnInit(): void {
+    this.getSumAdditions();
+  }
+
+  ngOnDestroy(): void {}
+
+  get sumAdditions(): string {
+    return `${this.generalService.totalSumAdditions}`;
+  }
+
+  get additions() {
+    return this.current.addtions;
   }
 
   back(): void {
-    this.router.navigate(['/multi-step/add-ons'])
+    this.router.navigate(['/multi-step/add-ons']);
   }
 
   confirm(): void {}
+
+  private getSumAdditions(): void {
+    const pricePlan = this.current.plan?.price ?? 0;
+    const price = this.current.addtions?.map((value) => value.price) ?? [];
+
+    this.generalService.sumAdditions(pricePlan, price);
+  }
 }

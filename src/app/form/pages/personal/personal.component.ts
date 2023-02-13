@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GeneralFormService } from 'src/app/service/general-form.service';
 
 @Component({
   selector: 'app-personal',
@@ -14,7 +15,11 @@ export class PersonalComponent implements OnInit {
     phone: ['', Validators.required],
   });
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private generalService: GeneralFormService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -27,6 +32,16 @@ export class PersonalComponent implements OnInit {
       this.myForm.markAllAsTouched();
       return;
     }
+
+    const name = this.myForm.get('name')?.value;
+    const email = this.myForm.get('email')?.value;
+    const phone = this.myForm.get('phone')?.value;
+
+    const data = {
+      user: { name: name, email: email, phone: phone },
+    };
+
+    this.generalService.saveSessionStorage(data);
 
     this.router.navigate(['/multi-step/select-plan']);
   }

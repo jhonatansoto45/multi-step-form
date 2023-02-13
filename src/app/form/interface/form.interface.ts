@@ -7,11 +7,20 @@ export interface CheckItem {
   checked: boolean;
   title: string;
   description: string;
-  price: string;
+  price: number;
 }
 
+//* OBJETO DE DATOS
 export interface DataComplete {
-  plan: Plan;
+  plan?: Plan;
+  user: User;
+  addtions?: CheckItem[];
+}
+
+export interface User {
+  name: string;
+  email: string;
+  phone: number;
 }
 
 export interface Plan {

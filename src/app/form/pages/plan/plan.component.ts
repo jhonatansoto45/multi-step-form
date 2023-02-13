@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GeneralFormService } from '../../../service/general-form.service';
-import { CardItem } from '../../interface/form.interface';
+import { CardItem, DataComplete } from '../../interface/form.interface';
 
 @Component({
   selector: 'app-plan',
@@ -29,6 +29,8 @@ export class PlanComponent implements OnInit {
 
   descuento: boolean = false;
   hasSelected: boolean = false;
+  current!: DataComplete;
+
   itemSelected: CardItem = {
     image: '',
     name: '',
@@ -40,7 +42,11 @@ export class PlanComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.generalService.loadSessionStorage())
+      this.current = this.generalService.loadSessionStorage();
+    else this.router.navigate(['/multi-step/your-info']);
+  }
 
   get strDescuento(): string {
     return !this.descuento ? 'mo' : 'yr';
@@ -77,12 +83,10 @@ export class PlanComponent implements OnInit {
 
   next(): void {
     const { name, price } = this.itemSelected;
-    this.generalService.dataMain$.next({
+    this.generalService.saveSessionStorage({
+      ...this.current,
       plan: { name, price, type: !this.descuento ? 'mo' : 'yr' },
     });
-
-    /* const plan = this.strDescuento;
-    sessionStorage.setItem('plan', plan); */
     this.router.navigate(['/multi-step/add-ons']);
   }
 }

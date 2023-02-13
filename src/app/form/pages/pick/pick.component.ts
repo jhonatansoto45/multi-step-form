@@ -1,38 +1,39 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { GeneralFormService } from 'src/app/service/general-form.service';
-import { CheckItem } from '../../interface/form.interface';
+
+import { GeneralFormService } from '../../../service/general-form.service';
+import { CheckItem, DataComplete } from '../../interface/form.interface';
 
 @Component({
   selector: 'app-pick',
   templateUrl: './pick.component.html',
   styleUrls: ['./pick.component.scss'],
 })
-export class PickComponent implements OnInit, OnDestroy {
+export class PickComponent implements OnInit {
   listChecks: CheckItem[] = [
     {
       checked: true,
       title: 'Online service',
       description: 'Access to multiplayer games',
-      price: '+$1',
+      price: 1,
     },
     {
       checked: true,
       title: 'Larger storage',
       description: 'Extra 1TB of cloud save',
-      price: '+$2',
+      price: 2,
     },
     {
       checked: false,
       title: 'Customizable profile',
       description: 'Custom theme on your profile',
-      price: '+$2',
+      price: 2,
     },
   ];
 
   plan: string = 'mo';
-  picksSeleted: Subscription = new Subscription();
+
+  current!: DataComplete;
 
   constructor(
     private router: Router,
@@ -40,16 +41,12 @@ export class PickComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.picksSeleted = this.generalService.dataMain$.subscribe((checks) => {
-      console.log(checks);
-    });
+    if (this.generalService.loadSessionStorage())
+      this.current = this.generalService.loadSessionStorage();
+    else this.router.navigate(['/multi-step/your-info']);
   }
 
-  ngOnDestroy(): void {
-    this.picksSeleted.unsubscribe();
-  }
-
-  typePrice(item: string): string {
+  typePrice(item: number): string {
     return this.plan === 'yr' ? `${item}0/` : `${item}/`;
   }
 
@@ -63,8 +60,10 @@ export class PickComponent implements OnInit, OnDestroy {
 
   next(): void {
     const checkeds = this.listChecks.filter((check) => check.checked);
-    this.generalService.picksSelected$.next(checkeds);
-    console.log(checkeds);
+    this.generalService.saveSessionStorage({
+      ...this.current,
+      addtions: checkeds,
+    });
 
     this.router.navigate(['/multi-step/summary']);
   }
