@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GeneralFormService } from 'src/app/service/general-form.service';
+import Swal from 'sweetalert2';
+
+import { GeneralFormService } from '../../../service/general-form.service';
 import { DataComplete } from '../../interface/form.interface';
 
 @Component({
@@ -24,7 +26,9 @@ export class FinishComponent implements OnInit, OnDestroy {
     this.getSumAdditions();
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.generalService.acceptPayment = false;
+  }
 
   get sumAdditions(): string {
     return `${this.generalService.totalSumAdditions}`;
@@ -38,12 +42,29 @@ export class FinishComponent implements OnInit, OnDestroy {
     this.router.navigate(['/multi-step/add-ons']);
   }
 
-  confirm(): void {}
+  confirm(): void {
+    this.generalService.acceptPayment = true;
+    this.router.navigate(['/multi-step/success']);
+  }
 
   private getSumAdditions(): void {
     const pricePlan = this.current.plan?.price ?? 0;
     const price = this.current.addtions?.map((value) => value.price) ?? [];
 
     this.generalService.sumAdditions(pricePlan, price);
+  }
+
+  resetPlanConfirm(): void {
+    Swal.fire({
+      title: 'Esta seguro que desea cambir el plan?',
+      showDenyButton: true,
+      confirmButtonText: 'Si',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.router.navigate(['/multi-step/select-plan']);
+      } else if (result.isDenied) {
+        Swal.fire('Ningún cambio realizado.', '', 'info');
+      }
+    });
   }
 }

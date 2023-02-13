@@ -8,6 +8,7 @@ import { PersonalComponent } from './pages/personal/personal.component';
 import { PlanComponent } from './pages/plan/plan.component';
 import { PickComponent } from './pages/pick/pick.component';
 import { FinishComponent } from './pages/finish/finish.component';
+import { SuccessComponent } from './components/success/success.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { FinishComponent } from './pages/finish/finish.component';
     PlanComponent,
     PickComponent,
     FinishComponent,
+    SuccessComponent,
   ],
   imports: [CommonModule, FormRoutingModule, FormsModule, ReactiveFormsModule],
 })

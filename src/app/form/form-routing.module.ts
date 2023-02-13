@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { SuccessComponent } from './components/success/success.component';
+import { SuccessGuard } from './guard/success.guard';
 import { FinishComponent } from './pages/finish/finish.component';
 import { PersonalComponent } from './pages/personal/personal.component';
 import { PickComponent } from './pages/pick/pick.component';
@@ -24,6 +26,11 @@ const routes: Routes = [
       {
         path: 'summary',
         component: FinishComponent,
+      },
+      {
+        path: 'success',
+        component: SuccessComponent,
+        canActivate: [SuccessGuard],
       },
       {
         path: '**',

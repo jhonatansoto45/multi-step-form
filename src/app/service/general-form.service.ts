@@ -13,6 +13,7 @@ export class GeneralFormService {
   private readonly nameItem: string = 'order';
 
   totalSumAdditions: number = 0;
+  acceptPayment:boolean = false;
 
   constructor() {}
 
@@ -31,7 +32,6 @@ export class GeneralFormService {
   }
 
   //* UTILS
-
   sumAdditions(price: number, additions: number[]): void {
     this.totalSumAdditions = additions.reduce(
       (initial, current) => initial + current,

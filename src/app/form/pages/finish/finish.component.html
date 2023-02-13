@@ -7,7 +7,7 @@
       <div class="final__plan">
         <div class="final__contain">
           <p class="final__title">{{ current.plan?.name }}</p>
-          <p>Change</p>
+          <a class="final__change" (click)="resetPlanConfirm()">Change</a>
         </div>
         <span class="final__price"
           >${{ current.plan?.price }}/{{ current.plan?.type }}</span
@@ -32,6 +32,6 @@
 
   <div class="plan__btns">
     <button class="btn__back" (click)="back()">Go back</button>
-    <button class="btn__confirm" (click)="confirm()">Next Step</button>
+    <button class="btn__confirm" (click)="confirm()">Confirm</button>
   </div>
 </section>

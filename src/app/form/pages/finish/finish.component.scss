@@ -4,6 +4,16 @@
   border-radius: 10px;
 }
 
+.final__change {
+  color: var(--cool-gray);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.final__change:hover {
+  color: var(--purplish-blue) !important;
+}
+
 .final__plan {
   display: flex;
   justify-content: space-between;
@@ -27,7 +37,7 @@
 }
 
 hr {
-  background-color: var(--cool-gray);
+  background-color: var(--cool-gray) !important;
 }
 
 .final__item {
