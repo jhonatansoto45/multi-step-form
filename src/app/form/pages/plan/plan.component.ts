@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 import { GeneralFormService } from '../../../service/general-form.service';
 import { CardItem, DataComplete } from '../../interface/form.interface';
 
@@ -82,11 +84,29 @@ export class PlanComponent implements OnInit {
   }
 
   next(): void {
+    if (this.itemSelected.image === '' && this.itemSelected.name === '') {
+      this.openPopupError();
+      return;
+    }
+
     const { name, price } = this.itemSelected;
     this.generalService.saveSessionStorage({
       ...this.current,
-      plan: { name, price, type: !this.descuento ? 'mo' : 'yr' },
+      plan: {
+        name,
+        price: !this.descuento ? price : Number(`${price}0`),
+        type: !this.descuento ? 'mo' : 'yr',
+      },
     });
+
     this.router.navigate(['/multi-step/add-ons']);
+  }
+
+  openPopupError(): void {
+    Swal.fire({
+      title: 'Error!',
+      text: 'Debes escoger un plan!',
+      icon: 'error',
+    });
   }
 }
