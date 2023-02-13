@@ -47,3 +47,23 @@
     color: var(--marine-blue) !important;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .aside {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    gap: 15px;
+    width: 100%;
+    background-image: url("../../../assets/images/bg-sidebar-mobile.svg ");
+    height: 172px;
+
+    .aside__item {
+      margin-bottom: 0;
+    }
+
+    .aside__text {
+      display: none;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -10,7 +10,7 @@ import { CardItem, DataComplete } from '../../interface/form.interface';
   templateUrl: './plan.component.html',
   styleUrls: ['./plan.component.scss'],
 })
-export class PlanComponent implements OnInit {
+export class PlanComponent {
   listCards: CardItem[] = [
     {
       image: '../../../../assets/images/icon-arcade.svg',
@@ -42,11 +42,9 @@ export class PlanComponent implements OnInit {
   constructor(
     private generalService: GeneralFormService,
     private router: Router
-  ) {}
-
-  ngOnInit(): void {
-    if (this.generalService.loadSessionStorage())
-      this.current = this.generalService.loadSessionStorage();
+  ) {
+    if (generalService.loadSessionStorage())
+      this.current = generalService.loadSessionStorage();
     else this.router.navigate(['/multi-step/your-info']);
   }
 
@@ -64,13 +62,14 @@ export class PlanComponent implements OnInit {
         !current.classList.contains('plan__item--selected')
       ) {
         this.hasSelected = true;
-        current.classList.add('plan__item--selected');
         this.itemSelected = item;
+        current.classList.add('plan__item--selected');
       } else if (
         current.classList.contains('plan__item--selected') &&
         Number(current.id) === index
       ) {
         this.hasSelected = false;
+        this.resetModel();
         current.classList.remove('plan__item--selected');
       } else {
         this.hasSelected = false;
@@ -102,11 +101,20 @@ export class PlanComponent implements OnInit {
     this.router.navigate(['/multi-step/add-ons']);
   }
 
+  //* UTILS
   openPopupError(): void {
     Swal.fire({
       title: 'Error!',
       text: 'Debes escoger un plan!',
       icon: 'error',
     });
+  }
+
+  resetModel(): void {
+    this.itemSelected = {
+      image: '',
+      name: '',
+      price: 0,
+    };
   }
 }

@@ -44,8 +44,15 @@ body {
   margin-bottom: 35px;
 }
 
+.btns__actions {
+  background-color: var(--white);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .btn__back {
-  float: left;
   margin-top: 76px;
   border-radius: 7px;
   padding: 10px;
@@ -63,14 +70,14 @@ body {
 }
 
 .btn__next {
-  float: right;
   margin-top: 76px;
-  border-radius: 7px;
-  padding: 10px;
+  border-radius: 5px;
+  padding: 15px;
   width: 100px;
   background-color: var(--marine-blue);
   color: var(--white);
   font-weight: 600;
+  border: none;
   cursor: pointer;
 }
 
@@ -87,7 +94,34 @@ body {
   border: none;
 }
 
+.btn__confirm:hover {
+  background-color: hsl(243, 93%, 74%);
+}
 
-.btn__confirm:hover{
-  background-color:hsl(243, 93%, 74%) ;
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--magnolia);
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .btns__actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 87px;
+    padding: 0 35px;
+    background-color: var(--white);
+
+    .btn__next,
+    .btn__back,
+    .btn__confirm {
+      margin-top: 0;
+    }
+  }
 }

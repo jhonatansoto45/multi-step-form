@@ -1,3 +1,4 @@
+
 form {
   width: 100%;
 
@@ -36,8 +37,23 @@ form {
   }
 }
 
-
-
 .input__outline--error {
   outline: 1px solid var(--strawberry-red);
+}
+
+.btns__actions {
+  flex-direction: row-reverse;
+}
+
+
+@media screen and (max-width: 600px) {
+  .personal {
+    background-color: var(--white);
+    width: 80%;
+    margin: auto;
+    position: absolute;
+    top: 124px;
+    border-radius: 30px;
+    padding: 35px;
+  }
 }

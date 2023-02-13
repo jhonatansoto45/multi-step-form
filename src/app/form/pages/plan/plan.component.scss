@@ -121,3 +121,33 @@ input:checked + .slider:before {
   transform: translateX(1.4em);
   background-color: #fff;
 }
+
+@media screen and (max-width: 600px) {
+  .plan {
+    background-color: var(--white);
+    width: 80%;
+    margin: auto;
+    position: absolute;
+    top: 124px;
+    border-radius: 30px;
+    padding: 35px;
+  }
+
+  .plan__card {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .plan__img {
+    margin-bottom: 0;
+  }
+
+  .plan__item {
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+  }
+}

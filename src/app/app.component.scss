@@ -9,3 +9,28 @@
   margin: 50px 0;
   width: 100%;
 }
+
+@media screen and (max-width: 1037px) {
+  .main {
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    gap: 0;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .content {
+   width: 80%;
+   margin: 0 auto;
+  }
+}
